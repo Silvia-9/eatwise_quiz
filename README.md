@@ -1,1 +1,1 @@
-# smarteats_app
+# SmartEats App
