@@ -255,12 +255,16 @@ header p {
 @media (max-width: 500px) {
   .login-container,
   .quiz-container {
-    width: 95%;
+    width: 100%;
+    max-width: 340px;    /* Fits iPhone screens */
+    min-width: unset;
     padding: 1rem;
+    margin: 0 auto;
+    box-sizing: border-box;
   }
 
   .quiz-container {
-    padding-top: 9rem !important; /* Force more space for greeting */
+    padding-top: 7rem !important; /* Enough space for greeting */
   }
 
   #greeting {
@@ -268,5 +272,17 @@ header p {
     padding: 0.3rem 0.7rem;
     top: 0.3rem;
     left: 0.3rem;
+    max-width: 90%;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  #question {
+    font-size: 1.1rem;
+  }
+
+  .answer-btn {
+    font-size: 1.1rem;
+    padding: 0.6rem;
   }
 }
