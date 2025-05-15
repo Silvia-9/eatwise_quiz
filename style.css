@@ -260,6 +260,13 @@ header p {
   }
 
   .quiz-container {
-    padding-top: 4.5rem; /* Add extra top padding for greeting */
+    padding-top: 9rem !important; /* Force more space for greeting */
+  }
+
+  #greeting {
+    font-size: 1rem;
+    padding: 0.3rem 0.7rem;
+    top: 0.3rem;
+    left: 0.3rem;
   }
 }
