@@ -258,4 +258,8 @@ header p {
     width: 95%;
     padding: 1rem;
   }
+
+  .quiz-container {
+    padding-top: 4.5rem; /* Add extra top padding for greeting */
+  }
 }
