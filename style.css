@@ -252,24 +252,31 @@ header p {
   font-size: 1.5rem;
 }
 
+.login-container,
+.quiz-container {
+  min-height: 400px; /* Desktop/tablet default */
+}
+
+/* Responsive height for mobile */
 @media (max-width: 500px) {
   .login-container,
   .quiz-container {
     width: 100%;
-    max-width: 340px;    /* Fits iPhone screens */
+    max-width: 340px;
     min-width: unset;
     padding: 1rem;
     margin: 0 auto;
     box-sizing: border-box;
+    min-height: 350px; /* Adjust for iPhone screens */
   }
 
   .quiz-container {
-    padding-top: 7rem !important; /* Enough space for greeting */
+    padding-top: 2rem !important; /* Reduced space for greeting */
   }
 
   #greeting {
     font-size: 1rem;
-    padding: 0.3rem 0.7rem;
+    padding: 0.3rem 0.5rem;
     top: 0.3rem;
     left: 0.3rem;
     max-width: 90%;
@@ -283,6 +290,20 @@ header p {
 
   .answer-btn {
     font-size: 1.1rem;
-    padding: 0.6rem;
+    padding: 0.5rem 0.5rem;   /* More vertical padding for easier tap */
+    margin: 0.4rem 0;
+    width: 100%;
+    min-width: 0;
+    border-radius: 8px;
+    box-sizing: border-box;
+  }
+
+  #next-btn {
+    font-size: 1.1rem;
+    padding: 0.9rem 0;
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 0.5rem;
+    box-sizing: border-box;
   }
 }

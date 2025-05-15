@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SmartEats Master</title>
+  <title>EatWise Master</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
-    <h1>SmartEats Master</h1>
+    <h1>EatWise Master</h1>
     <p>Put your health knowledge to the test!</p>
   </header>
 
@@ -112,9 +112,7 @@
       if (username !== "" && password !== "") {
         document.getElementById("login-container").style.display = "none";
         document.getElementById("quiz-container").style.display = "block";
-        document.getElementById("greeting").textContent = `Hello ${username} !`;
         showQuestion();
-      } else {
         errorEl.textContent = "Invalid username or password.";
       }
     }
@@ -139,6 +137,10 @@
       resetState();
       const currentQuestion = questions[currentQuestionIndex];
       questionEl.textContent = currentQuestion.question;
+
+      // Show greeting with username if available
+      const greetingEl = document.getElementById("greeting");
+      greetingEl.textContent = username ? `Hello, ${username}!` : "";
 
       answerButtons.forEach(btn => {
         const key = btn.dataset.answer;
