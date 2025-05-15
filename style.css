@@ -1,0 +1,261 @@
+/* ===== LOGIN STYLES ===== */
+body {
+  background: #f5f6fa;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+header {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2.8rem;
+  font-weight: 900;
+  color: #d32f6e;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px rgba(131, 72, 226, 0.08);
+  text-align: center;
+}
+
+header p {
+  font-size: 1.3rem;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  color: #F78E69;
+  margin-top: 0;
+  margin-bottom: 0.5rem; /* Reduced from 2rem */
+  letter-spacing: 1px;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px 20px; /* Optional: reduce vertical padding */
+}
+
+.login-container {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  width: 400px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-align: center;
+  margin-top: 0.5rem; /* Add or reduce this value */
+}
+
+.login-container h2 {
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.login-container input[type="text"],
+.login-container input[type="password"] {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin: 0.5rem 0;
+  border: 1.5px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #fafaff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.login-container input[type="text"]:focus,
+.login-container input[type="password"]:focus {
+  border-color: #8348e2;
+  outline: none;
+  box-shadow: 0 0 0 2px #e3d6fa;
+}
+
+.login-container button {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: #8348e2;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+.login-container button:hover {
+  background: #5e2ebf;
+}
+
+#login-error {
+  margin-top: 0.5rem;
+  color: red;
+  font-size: 0.9rem;
+}
+
+.quiz-container {
+  background: white;
+  padding: 2rem;
+  padding-top: 4.5rem; /* Add or increase this value to push content down */
+  border-radius: 10px;
+  width: 500px;
+  min-height: 500px; /* Add this line for a taller board */
+  margin: 2rem auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative; /* Ensure absolute positioning is relative to the quiz board */
+  margin-top: 0.5rem; /* Add or reduce this value */
+}
+
+#quiz h2 {
+  margin-bottom: 1.5rem;
+  color: #333;
+  text-align: left; /* Add this line */
+  width: 100%;      /* Ensure it spans the container */
+}
+
+#quiz ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+}
+
+.answer-btn {
+  width: 100%;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  border-radius: 5px;
+  color: black;
+  background: #FECEE9;
+  font-size: 1.5rem;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  border: 2px solid #EB9FEF; /* <-- Set your desired border color here */
+}
+
+.answer-btn.correct {
+  background:#84E296;
+  color: #222;
+  border-color: #7fc41c;
+}
+
+.answer-btn.wrong {
+  background: #f87171;
+  color: #fff;
+  border-color: #e11d48;
+}
+
+.answer-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+#next-btn {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: #8348e2;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease;
+}
+
+#next-btn:disabled {
+  background: #b7a7e6;
+  cursor: not-allowed;
+}
+
+#next-btn:hover:enabled {
+  background: #5e2ebf;
+}
+
+#quiz h2,
+#quiz button {
+  font-family: inherit;
+}
+
+.score-message {
+  color: #8348e2;
+  background: #EBB9DF;
+  border-radius: 18px;
+  padding: 2rem;
+  margin-top: 0.5rem; /* Small space above the score message */
+  margin: 5.5rem auto; /* More space from the top and bottom */
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center !important;
+  box-shadow: 0 4px 16px rgba(131, 72, 226, 0.15);
+  letter-spacing: 1px;
+  border: 2px solid #d1b3fa;
+  max-width: 90%;
+}
+
+.score-greeting {
+  font-size: 2rem;
+  color: #0B5D1E;
+  font-weight: bold;
+  margin-bottom: 0; /* No extra space below */
+  text-align: left;
+}
+
+.restart-btn {
+  display: block;
+  margin: 5rem auto 0 auto; /* Increased top margin for more space */
+  padding: 1rem 1rem;
+  background: #8348e2;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  box-shadow: 0 2px 12px rgba(131, 72, 226, 0.12);
+  text-align: center;
+}
+
+.restart-btn:hover {
+  background: #5e2ebf;
+  transform: translateY(-2px) scale(1.05);
+}
+
+#greeting {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.2rem;
+  font-size: 2rem;      /* Bigger than quiz question */
+  font-weight: 700;
+  color: #3185FC;
+  padding: 0.6rem 1.4rem;
+  border-radius: 20px;
+  box-shadow: 0 2px 12px rgba(131, 72, 226, 0.10);
+  z-index: 10;
+  letter-spacing: 0.5px;
+  border: none;
+}
+
+/* Optionally, keep quiz question font size smaller */
+#question {
+  font-size: 1.5rem;
+}
+
+@media (max-width: 500px) {
+  .login-container,
+  .quiz-container {
+    width: 95%;
+    padding: 1rem;
+  }
+}

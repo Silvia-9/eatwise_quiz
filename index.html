@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SmartEats Master</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>SmartEats Master</h1>
+    <p>Put your health knowledge to the test!</p>
+  </header>
+
+  <div class="login-container" id="login-container">
+    <h2>Sign in</h2>
+    <input type="text" id="username" placeholder="Enter username" />
+    <input type="password" id="password" placeholder="Enter password" />
+    <button onclick="handleLogin()">Login</button>
+    <p id="login-error" style="color:red;"></p>
+  </div>
+
+  <div class="quiz-container" id="quiz-container" style="display: none;">
+    <div id="quiz">
+      <div id="greeting"></div>
+      <h2 id="question"></h2>
+      <ul>
+        <li><button class="answer-btn" data-answer="a"></button></li>
+        <li><button class="answer-btn" data-answer="b"></button></li>
+        <li><button class="answer-btn" data-answer="c"></button></li>
+        <li><button class="answer-btn" data-answer="d"></button></li>
+      </ul>
+      <button id="next-btn" disabled>Next</button>
+    </div>
+  </div>
+
+  <!-- Questions Data -->
+  <script type="application/json" id="questions-data">
+    [
+      {
+        "question": "Q1. Which foods contain the highest sugar content for children?",
+        "answers": {
+          "a": "Cakes",
+          "b": "Ice creams",
+          "c": "Sweets",
+          "d": "Yoghurts"
+        },
+        "correct": "a"
+      },
+      {
+        "question": "Q2. What is the recommended sugar intake for children aged 4 to 6 years old?",
+        "answers": {
+          "a": "10 grams",
+          "b": "15 grams",
+          "c": "19 grams",
+          "d": "9 grams"
+        },
+        "correct": "c"
+      },
+      {
+        "question": "Q3.What is the recommended sugar intake for children aged 11 to older?",
+        "answers": {
+          "a": "25 grams",
+          "b": "30 grams",
+          "c": "20 grams",
+          "d": "10 grams"
+        },
+        "correct": "b"
+      },
+      {
+        "question": "Q4.What is the recommended sugar intake for children aged 7 to 10 years old?",
+        "answers": {
+          "a": "14 grams",
+          "b": "18 grams",
+          "c": "20 grams",
+          "d": "24 grams"
+        },
+        "correct": "d"
+      },
+      {
+        "question": "Q5.Which food contains a lot of sugar?",
+        "answers": {
+          "a": "Baked Goods",
+          "b": "French Fries and Sauces",
+          "c": "Granola Bars",
+          "d": "Beverages"
+        },
+        "correct": "d"
+      },
+      {
+        "question": "Q6. Which items from the list below are high in saturated fat?",
+        "answers": {
+          "a": "Bread",
+          "b": "Avocado",
+          "c": "Milk",
+          "d": "Chicken"
+        },
+        "correct": "c"
+      }
+    ]
+  </script>
+
+  <!-- Main Script -->
+  <script>
+    let username = "";
+
+    function handleLogin() {
+      username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const errorEl = document.getElementById("login-error");
+
+      if (username !== "" && password !== "") {
+        document.getElementById("login-container").style.display = "none";
+        document.getElementById("quiz-container").style.display = "block";
+        document.getElementById("greeting").textContent = `Hello ${username} !`;
+        showQuestion();
+      } else {
+        errorEl.textContent = "Invalid username or password.";
+      }
+    }
+
+    const questions = JSON.parse(document.getElementById("questions-data").textContent);
+    let currentQuestionIndex = 0;
+    let score = 0;
+
+    const questionEl = document.getElementById("question");
+    const answerButtons = document.querySelectorAll(".answer-btn");
+    const nextBtn = document.getElementById("next-btn");
+
+    function resetState() {
+      answerButtons.forEach(btn => {
+        btn.classList.remove("correct", "wrong");
+        btn.disabled = false;
+      });
+      nextBtn.disabled = true;
+    }
+
+    function showQuestion() {
+      resetState();
+      const currentQuestion = questions[currentQuestionIndex];
+      questionEl.textContent = currentQuestion.question;
+
+      answerButtons.forEach(btn => {
+        const key = btn.dataset.answer;
+        btn.textContent = currentQuestion.answers[key];
+      });
+    }
+
+    answerButtons.forEach(button => {
+      button.addEventListener("click", () => {
+        const selected = button.dataset.answer;
+        const correct = questions[currentQuestionIndex].correct;
+
+        if (selected === correct) {
+          button.classList.add("correct");
+          score++;
+        } else {
+          button.classList.add("wrong");
+          const correctBtn = document.querySelector(`.answer-btn[data-answer="${correct}"]`);
+          if (correctBtn) correctBtn.classList.add("correct");
+        }
+
+        answerButtons.forEach(btn => btn.disabled = true);
+        nextBtn.disabled = false;
+      });
+    });
+
+    nextBtn.addEventListener("click", () => {
+      currentQuestionIndex++;
+      if (currentQuestionIndex < questions.length) {
+        showQuestion();
+      } else {
+        showScore();
+      }
+    });
+
+    function showScore() {
+      const quiz = document.getElementById("quiz");
+      quiz.innerHTML = `
+        <div class="score-greeting">Hello ${username}!</div>
+        <h2 class="score-message">You got ${score} out of ${questions.length}!</h2>
+        <button class="restart-btn" onclick="location.reload()">🪄Restart Quiz</button>
+      `;
+    }
+  </script>
+
+  <footer style="text-align:center; color:#626060; margin-top:2rem; font-size:1rem;">
+    &copy; 2025 Silvia. All rights reserved.
+  </footer>
+</body>
+</html>
+
