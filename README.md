@@ -1,1 +1,1 @@
-# SmartEats App
+# EatWise Master
