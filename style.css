@@ -34,7 +34,7 @@ header h1 {
 header p {
   font-size: 1.3rem;
   font-family:Georgia, 'Times New Roman', Times, serif;
-  color: #F78E69;
+  color: #e8754b;
   margin-top: 0;
   margin-bottom: 0.5rem; /* Reduced from 2rem */
   letter-spacing: 1px;
@@ -191,16 +191,16 @@ header p {
   color: #8348e2;
   background: #EBB9DF;
   border-radius: 18px;
-  padding: 2rem;
+  padding: 1.5rem;
   margin-top: 0.5rem; /* Small space above the score message */
-  margin: 5.5rem auto; /* More space from the top and bottom */
+  margin: 4rem auto; /* More space from the top and bottom */
   font-size: 25px;
   font-weight: bold;
   text-align: center !important;
-  box-shadow: 0 4px 16px rgba(131, 72, 226, 0.15);
+  box-shadow: 0 4px 10px rgba(131, 72, 226, 0.15);
   letter-spacing: 1px;
   border: 2px solid #d1b3fa;
-  max-width: 90%;
+  max-width: 80%;
 }
 
 .score-greeting {
@@ -215,12 +215,12 @@ header p {
   display: block;
   margin: 5rem auto 0 auto; /* Increased top margin for more space */
   padding: 1rem 1rem;
-  background: #8348e2;
+  background: #835bc4;
   color: white;
   border: none;
   border-radius: 10px;
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 20px;
   cursor: pointer;
   transition: background 0.3s, transform 0.2s;
   box-shadow: 0 2px 12px rgba(131, 72, 226, 0.12);
