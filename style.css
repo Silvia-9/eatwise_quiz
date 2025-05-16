@@ -195,7 +195,7 @@ header p {
   margin-top: 0.5rem; /* Small space above the score message */
   margin: 4rem auto; /* More space from the top and bottom */
   font-size: 20px;
-  text-align: center;
+  text-align: left;
   box-shadow: 0 4px 10px rgba(131, 72, 226, 0.15);
   letter-spacing: 1px;
   border: 2px solid #d1b3fa;
