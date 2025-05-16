@@ -184,7 +184,8 @@ header p {
 
 #quiz h2,
 #quiz button {
-  font-family: inherit;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  
 }
 
 .score-message {
@@ -195,6 +196,7 @@ header p {
   margin-top: 0.5rem; /* Small space above the score message */
   margin: 4rem auto; /* More space from the top and bottom */
   font-size: 20px;
+  font-weight: bold;
   text-align: center !important;
   box-shadow: 0 4px 10px rgba(131, 72, 226, 0.15);
   letter-spacing: 1px;
@@ -202,9 +204,8 @@ header p {
   max-width: 80%;
 }
 
-
 .score-greeting {
-  font-size: 2rem;
+  font-size: 2.4rem;
   color: #3185FC;
   font-weight: bold;
   margin-bottom: 0; /* No extra space below */
@@ -236,11 +237,6 @@ header p {
   position: absolute;
   top: 1.2rem;
   left: 1.2rem;
-      
-    
-    
-      
-    
   font-size: 2.4rem;      /* Bigger than quiz question */
   font-weight: 700;
   color: #3185FC;
