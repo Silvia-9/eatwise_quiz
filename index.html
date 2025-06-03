@@ -46,6 +46,29 @@
     </div>
   </div>
 
+  <div class="video-container" id="video-container" style="display: none; text-align:center; margin-bottom:2rem;">
+    <h2 class="video-title">🎞️Did you know how to eat sugar wisely?</h2>
+    <div id="quiz-video" style="text-align:center; margin-bottom:2rem;">
+      <video width="500" controls controlsList="nodownload">
+        <source src="Sugar Facts Channel.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    <!-- Feedback form goes here -->
+    <form id="feedback-form" style="margin: 1.5em auto; max-width: 450px;">
+      <label for="feedback" style="font-weight:bold; display:block; margin-bottom:0.9em; text-align: left;">Your comments:</label>
+      <textarea id="feedback" rows="3" style="width:100%; border-radius:8px; border:1px solid #ccc; padding:0.5em; resize:vertical;font-family:'Segoe UI', Arial, sans-serif;" placeholder="Leave your feedback here..."></textarea>
+      <button type="submit" style="margin-top:0.5em; background:#3185FC; color:#fff; border:none; border-radius:5px; padding:1.2em 1.2em; font-weight:bold; cursor:pointer; font-family:'Segoe UI', Arial, sans-serif;font-size: 1rem;">Submit</button>
+      <div id="feedback-message" style="margin-top:0.7em; color:green; font-weight:bold; display:none;"></div>
+    </form>
+    <br>
+    <button id="video-next-btn" style="margin-top:1.5em; padding:0.7em 2em; font-size:1.1em;">Next</button>
+  </div>
+
+  <div class="quiz-footer">
+    &copy; 2025 Silvia Wu. All rights reserved.
+  </div>
+
   <!-- Questions Data -->
   <script type="application/json" id="questions-data">
     [
@@ -173,8 +196,7 @@
 
       if (username !== "" && password !== "") {
         document.getElementById("login-container").style.display = "none";
-        document.getElementById("quiz-container").style.display = "block";
-        showQuestion();
+        document.getElementById("video-container").style.display = "block"; // Show video page
         errorEl.textContent = "Invalid username or password.";
       }
     }
@@ -238,19 +260,78 @@
       }
     });
 
+    document.getElementById("video-next-btn").onclick = function() {
+      document.getElementById("video-container").style.display = "none";
+      document.getElementById("quiz-container").style.display = "block";
+      showQuestion();
+    };
+
     function showScore() {
       const quiz = document.getElementById("quiz");
+      const shareText = encodeURIComponent(`I scored ${score} out of ${questions.length} on the EatWise Quiz! Try it yourself:`);
+      const pageUrl = encodeURIComponent(window.location.href);
+
       quiz.innerHTML = `
         <div class="score-greeting">Hello ${username}!</div>
         <h2 class="score-message">You scored ${score} out of ${questions.length}!</h2>
+        <div class="share-buttons" style="margin: 1em 0;">
+          <a href="https://www.facebook.com/sharer/sharer.php?u=${pageUrl}&quote=${shareText}" target="_blank" rel="noopener" title="Share on Facebook">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook" style="filter:none;">
+          </a>
+          <a href="https://wa.me/?text=${shareText}%20${pageUrl}" target="_blank" rel="noopener" title="Share on WhatsApp">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="filter:none;">
+          </a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=${pageUrl}" target="_blank" rel="noopener" title="Share on LinkedIn">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png" alt="LinkedIn" style="filter:none;">
+          </a>
+        </div>
         <button class="restart-btn" onclick="location.reload()">🪄Restart Quiz</button>
       `;
     }
+
+    // Feedback form submission to SheetDB
+    document.getElementById("feedback-form").onsubmit = async function(e) {
+      e.preventDefault();
+      const comment = document.getElementById("feedback").value.trim();
+      const feedbackMsg = document.getElementById("feedback-message");
+      // Always get the username, or set as "Anonymous" if not provided
+      const name = (typeof username !== "undefined" && username) ? username : "Anonymous";
+
+      if (!comment) {
+        feedbackMsg.style.display = "block";
+        feedbackMsg.style.color = "red";
+        feedbackMsg.textContent = "Please enter your feedback before submitting.";
+        return;
+      }
+      feedbackMsg.style.display = "none";
+
+      // Send both name and comment to match your sheet headers
+      let data = { name, comment };
+
+      try {
+        const response = await fetch("https://sheetdb.io/api/v1/finydhxul2hwj", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ data: [data] })
+        });
+        if (response.ok) {
+          document.getElementById("feedback").value = "";
+          feedbackMsg.style.display = "block";
+          feedbackMsg.style.color = "green";
+          feedbackMsg.textContent = "Thank you for your feedback!";
+        } else {
+          feedbackMsg.style.display = "block";
+          feedbackMsg.style.color = "red";
+          feedbackMsg.textContent = "There was an error submitting your feedback. Please try again.";
+        }
+      } catch (err) {
+        feedbackMsg.style.display = "block";
+        feedbackMsg.style.color = "red";
+        feedbackMsg.textContent = "Network error. Please try again.";
+      }
+    };
   </script>
 
-  <footer style="text-align:center; color:#626060; margin-top:2rem; font-size:1rem;">
-    &copy; 2025 Silvia Wu. All rights reserved.
-  </footer>
 </body>
 </html>
 
