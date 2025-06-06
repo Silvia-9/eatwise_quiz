@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="EatWise Quiz.png" alt="EatWise Quiz Logo" width="150" height="150"/>  
+  <img src="EatWise Quiz.png" alt="EatWise Quiz Logo" width="200" height="150"/>  
 </p>
 
 **EatWise Quiz** is an interactive quiz app that teaches you about healthy eating habits in a fun way.
