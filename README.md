@@ -1,5 +1,5 @@
-<p align="center">
-  <img src="EatWise Quiz.png" alt="EatWise Quiz Logo" width="150"/>   
+<p align="left">
+  <img src="EatWise Quiz.png" alt="EatWise Quiz Logo" width="100"/>   
 </p>
 
 # 🍽️ **EatWise Quiz **
