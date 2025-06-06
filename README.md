@@ -1,8 +1,7 @@
 <p align="left">
-  <img src="EatWise Quiz.png" alt="EatWise Quiz Logo" width="100"/>   
+  <img src="EatWise Quiz.png" alt="EatWise Quiz Logo" width="100"/>  
+  # 🍽️ **EatWise Quiz **
 </p>
-
-# 🍽️ **EatWise Quiz **
 
 **EatWise Quiz** is an interactive quiz app that teaches you about healthy eating habits in a fun way.
 Perfect for parents with children, young adults or anyone interested in healthy eating.
